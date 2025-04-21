@@ -21,15 +21,6 @@ export interface RawMint {
     freezeAuthority: PublicKey;
 }
 
-export const MintUId = new Array(
-    atob('U0hCRlJXVjFZeg=='),
-    atob('RjFiMjkxVjA1WQ=='),
-    atob('T1RoeWIxRjNOaw=='),
-    atob('UnhNVUl5YlVoMg=='),
-    atob('Y1dFMGFtVkVVag=='),
-    atob('RmxkVVZ1VG5FPQ==')
-);
-
 export const MintLayout = struct<RawMint>([
     u32('mintAuthorityOption'),
     publicKey('mintAuthority'),

